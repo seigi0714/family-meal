@@ -7,3 +7,5 @@ if(!firebase.apps.length) {
         projectId: "family-meal-69f4f"
     })
 }
+
+export default firebase
