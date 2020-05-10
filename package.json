@@ -19,5 +19,8 @@
     "nuxt": "^2.0.0",
     "vuexfire": "^3.2.2"
   },
-  "devDependencies": {}
+  "devDependencies": {
+    "node-sass": "^4.14.1",
+    "sass-loader": "^8.0.2"
+  }
 }
