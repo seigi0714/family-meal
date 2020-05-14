@@ -13,3 +13,11 @@ export default {
   }  
 }
 </script>
+<style lang="scss">
+body{
+  margin: 0
+}
+section.index{
+  padding-top: 50px;
+}
+</style>
