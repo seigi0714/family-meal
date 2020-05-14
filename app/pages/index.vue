@@ -1,9 +1,16 @@
 <template>
-   <body>
-      <ul>
-        <li>
-          投稿一覧
-        </li>
-      </ul>
-   </body>
+   <section class="index">
+      <PostCard />
+   </section>
 </template>
+<script>
+import PostCard from '~/components/organisms/PostCard.vue'
+export default {
+  components:{
+    PostCard
+  }
+}
+</script>
+<style lang="scss" scoped>
+
+</style>
