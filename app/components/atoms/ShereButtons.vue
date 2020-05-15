@@ -18,8 +18,7 @@ a {
   text-decoration:none;
   font-family:fontawesome;
   display: inline;
-  width:40px;
-  height:28px;
+  
   padding-top:12px;
   margin:0 2px;
   -o-transition:all .5s;
