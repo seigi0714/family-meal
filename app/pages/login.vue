@@ -6,7 +6,7 @@
         <a href="/" class="login-form__google">
         <img class="login-form__google login-form__google--btn" src="~/assets/Logo/google.png" alt="グーグルログイン">
         </a>
-        <a href="" class="login-form__new-account">新規登録はこちら</a>
+        <a href="/signup" class="login-form__new-account">新規登録はこちら</a>
     </div>
 </template>
 <style lang="scss" scoped>
