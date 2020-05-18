@@ -2,7 +2,7 @@
   <header class="header">
     <el-button class="header__tittle" type="warning" icon="el-icon-knife-fork">familymeal</el-button>
     <div class="header__menu">
-      <a class="user-icon" href="/"><el-button  type="warning" icon="el-icon-edit-outline" circle></el-button></a>
+      <a class="user-icon" href="/add"><el-button  type="warning" icon="el-icon-edit-outline" circle></el-button></a>
       <a class="user-icon" href="/"><el-button  type="warning" icon="el-icon-search" circle></el-button></a>
       <a class="user-icon"><img
         src="https://shadow.elemecdn.com/app/element/hamburger.9cf7b091-55e9-11e9-a976-7f4d0b07eef6.png"
