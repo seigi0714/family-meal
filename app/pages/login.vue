@@ -9,6 +9,7 @@
         <a href="/signup" class="login-form__new-account">新規登録はこちら</a>
     </div>
 </template>
+
 <style lang="scss" scoped>
 nuxt-link{
     text-decoration: none;
