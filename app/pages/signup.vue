@@ -1,12 +1,33 @@
 <template>
     <div class="signup">
         <h1 class="signup__title">アカウント作成</h1>
-        <a href="/" class="link">
+        <p class="error" v-if="error">{{ error }}</p>
+        <div　class="link" @click="googleAuth">
             <img src="~/assets/Logo/googleicon.png" alt="グーグルアイコン" class="link__icon">
             <span class="link__span">googleアカウントを使用</span>
-        </a>
+        </div>
     </div>
 </template>
+
+<script>
+export default {
+    data() {
+        return {
+            error: null
+        }
+    },
+    methods: {
+       async googleAuth() {
+           try {
+               await this.$store.dispach("googleAuth")
+           this.$router.push("/")
+           } catch(e) {
+               this.formError = e.message
+           }
+       }
+    }   
+}
+</script>
 <style lang="scss" scoped>
 .signup{
     position: absolute;
