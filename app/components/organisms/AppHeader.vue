@@ -4,20 +4,30 @@
     <div class="header__menu">
       <a class="user-icon" href="/add"><el-button  type="warning" icon="el-icon-edit-outline" circle></el-button></a>
       <a class="user-icon" href="/"><el-button  type="warning" icon="el-icon-search" circle></el-button></a>
-      <a class="user-icon"><img
+      <a class="user-icon" href="/signup"><img
         src="https://shadow.elemecdn.com/app/element/hamburger.9cf7b091-55e9-11e9-a976-7f4d0b07eef6.png"
-        alt="posts" class="icon-img"/></a>
+        alt="posts" class="icon-img"/>
+      </a>
+    </div>
+    <div class="header__logout" @click="logout">
+      ログアウト
     </div>
   </header>
 </template>
 
 <script>
 import HeaderMenu from "~/components/atoms/HeaderMenu.vue";
+import firebase from "@/plugins/firebase"
 export default {
   components: {
     HeaderMenu
+  },
+  methods: {
+    logout() {
+      return this.$store.dispatch("users/logout")
+    }
   }
-};
+}
 </script>
 <style lang="scss" scoped>
 .header {
@@ -38,7 +48,6 @@ export default {
   &__menu {
     display: inline-block;
     height: 100%;
-    }
     .user-icon{
           display: inline-block;
           height: 42px;
@@ -49,5 +58,13 @@ export default {
             border-radius: 50%;
         }
     }
+  }
+  &__logout {
+    position: absolute;
+    display: inline-block;
+    right:10px;
+    top: 10px;
+    cursor: pointer;
+  }
 }
 </style>

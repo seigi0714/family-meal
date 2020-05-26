@@ -1,8 +1,24 @@
 rules_version = '2';
 service cloud.firestore {
   match /databases/{database}/documents {
-    match /{document=**} {
-      allow read, write: if false;
+    function isAnyAuthenticated() {
+      return request.auth != null;
+    }
+    
+    function isUserAuthenticated(userID) {
+      return isAnyAuthenticated() && userID == request.auth.uid;
+    }
+
+    match /users/{userID}{
+       allow create: if isUserAuthenticated(userID)
+        && (!('name' in request.resource.data) || (request.resource.data.name is string && request.resource.data.name.size() <= 20))
+        && request.resource.data.createdAt == request.time // serverTimestamp()
+        && request.resource.data.updatedAt == request.time // serverTimestamp()
+      ;
+      allow update: if isUserAuthenticated(userID)
+        && isNotUpdating('groupCount')
+        && request.resource.data.updatedAt == request.time;
+      allow get: if isUserAuthenticated(userID);
     }
   }
 }

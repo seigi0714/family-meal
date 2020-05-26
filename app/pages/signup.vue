@@ -6,24 +6,28 @@
             <img src="~/assets/Logo/googleicon.png" alt="グーグルアイコン" class="link__icon">
             <span class="link__span">googleアカウントを使用</span>
         </div>
+        <p>すでにアカウントをお持ちの方は<a>こちら</a></p>
     </div>
 </template>
 
 <script>
+import firebase from "@/plugins/firebase";
 export default {
     data() {
         return {
-            error: null
+            error: null,
         }
     },
+    mounted: function(){
+        firebase.auth().onAuthStateChanged(user =>{
+            if(user){
+                this.$router.push("/users/add")
+            }
+        })
+    },
     methods: {
-       async googleAuth() {
-           try {
-               await this.$store.dispach("googleAuth")
-           this.$router.push("/")
-           } catch(e) {
-               this.formError = e.message
-           }
+       googleAuth() {
+           return this.$store.dispatch("users/googleAuth")     
        }
     }   
 }
@@ -49,6 +53,7 @@ export default {
         border-radius: 4px;
         box-shadow: 0 2px 12px 0 rgba(0, 0, 0, 0.1);
         border-color: #E4E7ED;
+        cursor: pointer;
         &__icon{
             height: 20px;
             width: 20px;
