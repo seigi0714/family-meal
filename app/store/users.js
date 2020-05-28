@@ -24,13 +24,17 @@ export const actions = {
     addUser: firestoreAction((context, {name,text}) =>{
         var user = firebase.auth().currentUser;
         if(user){
-            usersRef.add({
+            usersRef.doc(user.uid).set({
                 name: name,
                 email: user.email,
                 userID: user.uid,
                 belongGroup: null,
                 followGroup: null,
-                selfIntroduction: text
+                selfIntroduction: text,
+                createAt: firebase.firestore.FieldValue.serverTimestamp(),
+                updateAt: null,
+                likePost: null,
+                groupCount: 0
             })
         }
     }),

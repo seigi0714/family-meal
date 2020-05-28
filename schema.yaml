@@ -1,0 +1,54 @@
+user: 
+  documentID: auth.uid
+  name: string
+  selfIntroduction: string
+  createat: Timestamp
+  updateat: Timestamp
+  iconURL: string
+  likePost: postID
+  groupCount: int
+    belongingGroups:
+      documentID: groupID
+
+groups: 
+  documentID: auto
+  name: string
+  usercount: Int
+  createAt: String
+  invitationCode: 
+    code:string
+    expireAt
+  
+  groupUsers:
+    documentID: userID
+    name: string
+    createAt: timeStamp
+    
+  post:
+    documentID: auto
+    imageURL: string
+    title: string
+    caption: string
+    like: bool
+    likesCount: number
+    createat: Timestamp
+    updateAt: Timestamp
+    user: userID
+    group: GroupID
+
+    comment:
+      user: userID
+      text: string
+      like: bool
+      likeCount: number
+      createAt: timestamp
+
+invitationCode:
+     code: string
+     group: groupID
+     expireAt: timeStamp
+     createAt: timestamp
+
+
+
+
