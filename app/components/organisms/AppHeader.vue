@@ -1,17 +1,22 @@
 <template>
   <header class="header">
+    <client-only>
     <el-button class="header__tittle" type="warning" icon="el-icon-knife-fork">familymeal</el-button>
     <div class="header__menu">
       <a class="user-icon" href="/add"><el-button  type="warning" icon="el-icon-edit-outline" circle></el-button></a>
       <a class="user-icon" href="/"><el-button  type="warning" icon="el-icon-search" circle></el-button></a>
-      <a class="user-icon" href="/signup"><img
+      <a v-if="$firebase.currentUser" class="user-icon" href="/"><img
         src="https://shadow.elemecdn.com/app/element/hamburger.9cf7b091-55e9-11e9-a976-7f4d0b07eef6.png"
         alt="posts" class="icon-img"/>
       </a>
     </div>
-    <div class="header__logout" @click="logout">
+    <div v-if="$firebase.currentUser" class="header__user" @click="logout">
       ログアウト
     </div>
+    <div v-else class="header__user" >
+      <a href="/signup" >ログイン</a>
+    </div>
+    </client-only>
   </header>
 </template>
 
@@ -22,6 +27,9 @@ export default {
   components: {
     HeaderMenu
   },
+  created: function(){
+    this.$store.dispatch("users/init")
+  },
   methods: {
     logout() {
       return this.$store.dispatch("users/logout")
@@ -30,6 +38,9 @@ export default {
 }
 </script>
 <style lang="scss" scoped>
+a{
+
+}
 .header {
   border: 1px solid #EBEEF5;
   margin-bottom: 15px;
@@ -59,7 +70,7 @@ export default {
         }
     }
   }
-  &__logout {
+  &__user {
     position: absolute;
     display: inline-block;
     right:10px;

@@ -1,13 +1,14 @@
 <template>
-    <div class="signup">
+    <client-only>
+    <div  class="signup">
         <h1 class="signup__title">アカウント作成</h1>
         <p class="error" v-if="error">{{ error }}</p>
         <div　class="link" @click="googleAuth">
             <img src="~/assets/Logo/googleicon.png" alt="グーグルアイコン" class="link__icon">
             <span class="link__span">googleアカウントを使用</span>
         </div>
-        <p>すでにアカウントをお持ちの方は<a>こちら</a></p>
-    </div>
+    </div>    
+    </client-only>
 </template>
 
 <script>

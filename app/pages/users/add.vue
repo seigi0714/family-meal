@@ -1,6 +1,6 @@
 <template>
   <main>
-    <el-card class="user-profile" :body-style="{ padding: '0px'}">
+    <el-card  class="user-profile" :body-style="{ padding: '0px'}">
       <p class="error" v-if="error">{{ error }}</p>
       <div class="user-profile__header">
         <div class="user-profile__header user-profile__header--title">マイプロフィール</div>
@@ -9,7 +9,7 @@
         <el-avatar :src="iconUrl" class="user-profile__icon user-profile__icon--img"></el-avatar>
         <label for="changeIcon" class="user-profile__icon user-profile__icon--label">
           <i class="el-icon-camera"></i>プロフィール画像の追加
-          <input type="file" id="changeIcon" accept=".jpeg, .png"  />
+          <input type="file" id="changeIcon" accept=".jpeg, .png" />
         </label>
       </div>
       <el-input placeholder="ニックネーム" v-model="name" class="user-profile__input"></el-input>
@@ -39,17 +39,20 @@ export default {
         "https://cube.elemecdn.com/3/7c/3ea6beec64369c2642b92c6726f1epng.png"
     };
   },
+  created: function(){
+    this.$store.dispatch("users/init")
+  },
   methods: {
     async addUser() {
-      try{
-        await this.$store.dispatch("users/addUser", { 
-        name: this.name, 
-        text: this.text 
-      })
-      this.router.push("/")
-      } catch(e) {
-        this.error = e.error
-      } 
+      try {
+        await this.$store.dispatch("users/addUser", {
+          name: this.name,
+          text: this.text
+        });
+        this.router.push("/");
+      } catch (e) {
+        this.error = e.error;
+      }
     }
   }
 };
@@ -117,24 +120,24 @@ main {
       margin: 15px 10px;
       box-sizing: border-box;
     }
-    &__add{
+    &__add {
       display: block;
       box-sizing: border-box;
       margin: 10px;
       padding: 15px auto;
       &__btn {
-      display: table-cell;
-      height: 38px;
-      width: 68px;
-      background-color: #e6a23c;
-      padding: 10px;
-      box-sizing: border-box;
-      text-align: center;
-      text-justify: center;
-      border-radius: 4px;
-      margin: 15px 50%;
-      color: white;
-      cursor: pointer;
+        display: table-cell;
+        height: 38px;
+        width: 68px;
+        background-color: #e6a23c;
+        padding: 10px;
+        box-sizing: border-box;
+        text-align: center;
+        text-justify: center;
+        border-radius: 4px;
+        margin: 15px 50%;
+        color: white;
+        cursor: pointer;
       }
     }
   }
