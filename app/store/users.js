@@ -40,5 +40,6 @@ export const actions = {
     }),
     logout() {
         firebase.auth().signOut()
+        this.$router.push("/")
     }
 }

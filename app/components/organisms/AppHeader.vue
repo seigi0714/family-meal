@@ -5,18 +5,23 @@
     <div class="header__menu">
       <a class="user-icon" href="/add"><el-button  type="warning" icon="el-icon-edit-outline" circle></el-button></a>
       <a class="user-icon" href="/"><el-button  type="warning" icon="el-icon-search" circle></el-button></a>
-      <a v-if="$firebase.currentUser" class="user-icon" href="/"><img
-        src="https://shadow.elemecdn.com/app/element/hamburger.9cf7b091-55e9-11e9-a976-7f4d0b07eef6.png"
-        alt="posts" class="icon-img"/>
-      </a>
+      <a v-if="!$firebase.currentUser" class="user-icon" href="/">
+      <el-avatar> user </el-avatar>
+    </a>
     </div>
     <div v-if="$firebase.currentUser" class="header__user" @click="logout">
       ログアウト
     </div>
-    <div v-else class="header__user" >
-      <a href="/signup" >ログイン</a>
+    <div v-if="!$firebase.currentUser" class="header__user" >
+      <a href="/signup">ログイン</a>
     </div>
     </client-only>
+    <div class="header__menu">
+    <a v-if="$firebase.currentUser" class="user-icon" href="/"><img
+        src="https://shadow.elemecdn.com/app/element/hamburger.9cf7b091-55e9-11e9-a976-7f4d0b07eef6.png"
+        alt="posts" class="icon-img"/>
+    </a>
+    </div>
   </header>
 </template>
 
@@ -38,9 +43,6 @@ export default {
 }
 </script>
 <style lang="scss" scoped>
-a{
-
-}
 .header {
   border: 1px solid #EBEEF5;
   margin-bottom: 15px;
@@ -76,6 +78,9 @@ a{
     right:10px;
     top: 10px;
     cursor: pointer;
+    a {
+       text-decoration: none;
+    }
   }
 }
 </style>
